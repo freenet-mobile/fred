@@ -1,7 +1,23 @@
 language: java
 
 sudo: false
-dist: trusty
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      jdk:
+        - oraclejdk9
+        - oraclejdk8
+        - oraclejdk7
+        - openjdk8
+  include:
+    - os: linux
+      dist: precise
+      jdk:
+        - oraclejdk9
+        - oraclejdk8
+        - oraclejdk7
+        - openjdk8
 
 env:
   global:
@@ -26,12 +42,6 @@ before_install:
   - echo -e "org.gradle.parallel = true\norg.gradle.jvmargs=-Xms256m -Xmx1024m\norg.gradle.configureondemand=true\ntasks.withType(Test) {\n maxParallelForks = Runtime.runtime.availableProcessors()\n}" > gradle.properties
 
 install: "./gradlew jar"
-
-jdk:
-  - oraclejdk9
-  - oraclejdk8
-  - oraclejdk7
-  - openjdk8
 
 before_deploy:
   - "./gradlew javadoc ; true"
