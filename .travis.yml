@@ -1,23 +1,36 @@
 language: java
 
+dist: trusty
+
 sudo: false
+
 matrix:
   include:
     - os: linux
       dist: trusty
-      jdk:
-        - oraclejdk9
-        - oraclejdk8
-        - oraclejdk7
-        - openjdk8
+      jdk: oraclejdk9
+    - os: linux
+      dist: trusty
+      jdk: oraclejdk8
+    - os: linux
+      dist: trusty
+      jdk: oraclejdk7
+    - os: linux
+      dist: trusty
+      jdk: openjdk8
   include:
     - os: linux
       dist: precise
-      jdk:
-        - oraclejdk9
-        - oraclejdk8
-        - oraclejdk7
-        - openjdk8
+      jdk: oraclejdk9
+    - os: linux
+      dist: precise
+      jdk: oraclejdk8
+    - os: linux
+      dist: precise
+      jdk: oraclejdk7
+    - os: linux
+      dist: precise
+      jdk: openjdk8
 
 env:
   global:
