@@ -1,6 +1,35 @@
 language: java
 
+dist: trusty
+
 sudo: false
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      jdk: oraclejdk9
+    - os: linux
+      dist: trusty
+      jdk: oraclejdk8
+    - os: linux
+      dist: trusty
+      jdk: oraclejdk7
+    - os: linux
+      dist: trusty
+      jdk: openjdk8
+    - os: linux
+      dist: precise
+      jdk: oraclejdk9
+    - os: linux
+      dist: precise
+      jdk: oraclejdk8
+    - os: linux
+      dist: precise
+      jdk: oraclejdk7
+    - os: linux
+      dist: precise
+      jdk: openjdk8
 
 env:
   global:
@@ -21,13 +50,10 @@ cache:
   - $HOME/.gradle/caches/
   - $HOME/.gradle/wrapper/
 
-before_install: echo -e "org.gradle.parallel = true\norg.gradle.jvmargs=-Xms256m -Xmx1024m\norg.gradle.configureondemand=true\ntasks.withType(Test) {\n maxParallelForks = Runtime.runtime.availableProcessors()\n}" > gradle.properties
-install: "./gradlew jar"
+before_install:
+  - echo -e "org.gradle.parallel = true\norg.gradle.jvmargs=-Xms256m -Xmx1024m\norg.gradle.configureondemand=true\ntasks.withType(Test) {\n maxParallelForks = Runtime.runtime.availableProcessors()\n}" > gradle.properties
 
-jdk:
-  - oraclejdk8
-  - oraclejdk9
-  - openjdk8
+install: "./gradlew jar"
 
 before_deploy:
   - "./gradlew javadoc ; true"
