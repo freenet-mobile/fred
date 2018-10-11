@@ -1,0 +1,12 @@
+version: "2"
+services:
+    freenet:
+        image: gradle:jdk7
+        container_name: freenet
+        working_dir: /root/project
+        entrypoint: gradle test
+        privileged: true
+        user: root
+        volumes:
+            - $PWD:/root/project
+
