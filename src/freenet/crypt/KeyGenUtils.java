@@ -36,7 +36,7 @@ import freenet.support.Fields;
  */
 public final class KeyGenUtils {
 
-    private static BouncyCastleProvider bcProvider = new BouncyCastleProvider();
+    //private static BouncyCastleProvider bcProvider = new BouncyCastleProvider();
 
     /**
      * Generates a public/private key pair formatted for the algorithm specified
@@ -49,7 +49,7 @@ public final class KeyGenUtils {
             throw new UnsupportedTypeException(type);
         }
         try {
-            KeyPairGenerator kg = KeyPairGenerator.getInstance(type.alg, bcProvider);
+            KeyPairGenerator kg = KeyPairGenerator.getInstance(type.alg);
             kg.initialize(type.spec);
             return kg.generateKeyPair();
         } catch (NoSuchAlgorithmException e) {
@@ -70,7 +70,7 @@ public final class KeyGenUtils {
             throw new UnsupportedTypeException(type);
         }
         try {
-            KeyFactory kf = KeyFactory.getInstance(type.alg, bcProvider);
+            KeyFactory kf = KeyFactory.getInstance(type.alg);
             X509EncodedKeySpec xks = new X509EncodedKeySpec(pub);
             return kf.generatePublic(xks);
         } catch (NoSuchAlgorithmException e) {
@@ -125,7 +125,7 @@ public final class KeyGenUtils {
             throw new UnsupportedTypeException(type);
         }
         try {
-            KeyFactory kf = KeyFactory.getInstance(type.alg, bcProvider);
+            KeyFactory kf = KeyFactory.getInstance(type.alg);
 
             PublicKey pubK = getPublicKey(type, pub);
 
@@ -172,7 +172,7 @@ public final class KeyGenUtils {
      */
     public static SecretKey genSecretKey(KeyType type){
         try{
-            KeyGenerator kg = KeyGenerator.getInstance(type.alg, bcProvider);
+            KeyGenerator kg = KeyGenerator.getInstance(type.alg);
             kg.init(type.keySize);
             return kg.generateKey();
         } catch (NoSuchAlgorithmException e) {

@@ -11,6 +11,7 @@ if [ ! -f "${DOWNLOAD_FULLPATH}" ]; then
 fi
 cp "${DOWNLOAD_FULLPATH}" "${EXT_FULLPATH}"
 
+echo $JAVA_VERSION
 ls ${EXT_FULLPATH}
 
 cat /etc/java-7-openjdk/security/java.security|grep security.provider
