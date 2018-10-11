@@ -27,7 +27,6 @@ before_install:
   - echo "security.provider.11=org.bouncycastle.jce.provider.BouncyCastleProvider" | sudo tee -a /etc/java-7-openjdk/security/java.security
   - cat /etc/java-7-openjdk/security/java.security|grep security.provider
   - sudo apt-get update
-  - sudo update-alternatives --set java $java_path
   - java -version
 install:
   - "./gradlew jar"
