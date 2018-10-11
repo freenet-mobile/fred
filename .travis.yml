@@ -1,6 +1,9 @@
 language: java
 
-sudo: false
+sudo: required
+
+services:
+  - docker
 
 env:
   global:
@@ -20,14 +23,16 @@ cache:
   - $HOME/.m2
   - $HOME/.gradle/caches/
   - $HOME/.gradle/wrapper/
+  - $HOME/.bc
 
 before_install: echo -e "org.gradle.parallel = true\norg.gradle.jvmargs=-Xms256m -Xmx1024m\norg.gradle.configureondemand=true\ntasks.withType(Test) {\n maxParallelForks = Runtime.runtime.availableProcessors()\n}" > gradle.properties
-install: "./gradlew jar"
+install: if [[ $JAVA_HOME = *java-7-openjdk* ]]; then docker-compose up; else ./gradlew jar; fi
 
 jdk:
-  - oraclejdk8
   - oraclejdk9
+  - oraclejdk8
   - openjdk8
+  - openjdk7
 
 before_deploy:
   - "./gradlew javadoc ; true"
