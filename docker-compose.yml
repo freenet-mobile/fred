@@ -3,12 +3,13 @@ services:
     freenet:
         image: gradle:jdk7
         container_name: freenet
-        working_dir: /home/gradle/project
+        working_dir: /home/root/project
         entrypoint: sh ./entrypoint.sh
         privileged: true
         user: root
         volumes:
-            - $PWD:/home/gradle/project
-            - $PWD/gradle.properties-docker:/home/gradle/project/gradle.properties
+            - $PWD:/home/root/project
+            - $PWD/gradle.properties-docker:/home/root/project/gradle.properties
             - $PWD/java.security-docker:/etc/java-7-openjdk/security/java.security
+            - $HOME/.bc:/home/root/.bc
 
