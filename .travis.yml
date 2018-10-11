@@ -1,7 +1,6 @@
 language: java
 
-sudo: false
-dist: precise
+sudo: required
 
 env:
   global:
@@ -22,10 +21,13 @@ cache:
   - $HOME/.gradle/caches/
   - $HOME/.gradle/wrapper/
 
-    #before_install:
-    #  - sudo wget "https://bouncycastle.org/download/bcprov-ext-jdk15on-159.jar" -O "${JAVA_HOME}/jre/lib/ext/bcprov-ext-jdk15on-159.jar"
+before_install:
+  - sudo wget "https://bouncycastle.org/download/bcprov-ext-jdk15on-159.jar" -O "${JAVA_HOME}/jre/lib/ext/bcprov-ext-jdk15on-159.jar"
 
-install: "JAVA_TOOL_OPTIONS=-Dhttps.protocols=TLSv1.2 ./gradlew jar"
+install:
+  - sudo perl -pi.bak -e 's/^(security\.provider\.)([0-9]+)/$1.($2+1)/ge' /etc/java-7-openjdk/security/java.security
+  - echo "security.provider.1=org.bouncycastle.jce.provider.BouncyCastleProvider" | sudo tee -a /etc/java-7-openjdk/security/java.security
+  - "./gradlew jar -x test"
 
 jdk:
   - openjdk7
