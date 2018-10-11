@@ -18,12 +18,6 @@ before_cache:
 
 cache:
   apt: true
-  directories:
-  - lib/
-  - $HOME/.m2
-  - $HOME/.gradle/caches/
-  - $HOME/.gradle/wrapper/
-  - $HOME/.bc
 
 before_install: echo -e "org.gradle.parallel = true\norg.gradle.jvmargs=-Xms256m -Xmx1024m\norg.gradle.configureondemand=true\ntasks.withType(Test) {\n maxParallelForks = Runtime.runtime.availableProcessors()\n}" > gradle.properties
 install: if [[ $JAVA_HOME = *java-7-openjdk* ]]; then docker-compose up; else ./gradlew jar; fi
