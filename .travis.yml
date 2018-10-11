@@ -35,7 +35,7 @@ install:
         sudo cp /etc/java-7-openjdk/security/java.security{.1,};
         fi
   - if [ "$JAVA_HOME" != *java-7-openjdk* ]; then
-        ./gradle jar;
+        ./gradlew jar;
         fi
 
 jdk:
