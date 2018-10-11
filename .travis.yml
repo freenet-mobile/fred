@@ -25,7 +25,7 @@ cache:
     #before_install:
     #  - sudo wget "https://bouncycastle.org/download/bcprov-ext-jdk15on-159.jar" -O "${JAVA_HOME}/jre/lib/ext/bcprov-ext-jdk15on-159.jar"
 
-install: "./gradlew jar"
+install: "JAVA_TOOL_OPTIONS=-Dhttps.protocols=TLSv1.2 ./gradlew jar"
 
 jdk:
   - openjdk7
