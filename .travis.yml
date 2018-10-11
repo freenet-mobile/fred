@@ -34,6 +34,10 @@ jdk:
   - openjdk8
   - openjdk7
 
+before_deploy:
+  - "./gradlew javadoc ; true"
+  - "pip install --user awscli"
+  - "./gradlew copyRuntimeLib"
 deploy:
   - provider: script
     script: ~/.local/bin/aws s3 sync --region=us-east-1 --cache-control "public, max-age=86400" --content-encoding utf-8 --delete build/docs/javadoc/ s3://website-javadoc.freenetproject.org

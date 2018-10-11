@@ -12,3 +12,4 @@ if [ ! -f "${DOWNLOAD_FULLPATH}" ]; then
 fi
 
 gradle jar
+gradle test
