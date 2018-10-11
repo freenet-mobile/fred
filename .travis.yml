@@ -26,8 +26,8 @@ before_install:
   - sudo wget "https://bouncycastle.org/download/bcprov-ext-jdk15on-159.jar" -O "${JAVA_HOME}/jre/lib/ext/bcprov-ext-jdk15on-159.jar"
   - echo "security.provider.11=org.bouncycastle.jce.provider.BouncyCastleProvider" | sudo tee -a /etc/java-7-openjdk/security/java.security
   - cat /etc/java-7-openjdk/security/java.security|grep security.provider
-  - apt-get update
-  - update-alternatives --set java $java_path
+  - sudo apt-get update
+  - sudo update-alternatives --set java $java_path
   - java -version
 install:
   - "./gradlew jar"
