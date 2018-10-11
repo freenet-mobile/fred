@@ -22,10 +22,10 @@ cache:
   - $HOME/.gradle/wrapper/
 
 before_install:
-  - [[ "$JAVA_HOME" == *java-7-openjdk* ]] && sudo wget "https://bouncycastle.org/download/bcprov-ext-jdk15on-159.jar" -O "${JAVA_HOME}/jre/lib/ext/bcprov-ext-jdk15on-159.jar"
+  - sudo wget "https://bouncycastle.org/download/bcprov-ext-jdk15on-159.jar" -O "${JAVA_HOME}/jre/lib/ext/bcprov-ext-jdk15on-159.jar"
 
 install:
-  - [[ "$JAVA_HOME" != *java-7-openjdk* ]] && ./gradle jar
+  - ./gradle jar
 
 jdk:
   - oraclejdk9
