@@ -8,7 +8,7 @@ services:
         privileged: true
         user: root
         volumes:
-            - $PWD:/home/gradle/project:nocopy
-            - $PWD/gradle.properties-docker:/home/gradle/project/gradle.properties:ro
-            - $PWD/java.security-docker:/etc/java-7-openjdk/security/java.security:ro
+            - $PWD:/home/gradle/project
+            - $PWD/gradle.properties-docker:/home/gradle/project/gradle.properties
+            - $PWD/java.security-docker:/etc/java-7-openjdk/security/java.security
 
