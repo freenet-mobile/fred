@@ -118,7 +118,8 @@ public final class Fallocate {
     }
   }
 
-  private static void legacyFill(FileChannel fc, long newLength, long offset) throws IOException {
+  // mnode-changed: Made public in order to use this method rather than forChannel.
+  public static void legacyFill(FileChannel fc, long newLength, long offset) throws IOException {
     MersenneTwister mt = new MersenneTwister();
     byte[] b = new byte[4096];
     ByteBuffer bb = ByteBuffer.wrap(b);
