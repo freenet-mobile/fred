@@ -8,6 +8,10 @@ buildscript {
     }
 }
 
+plugins {
+    id("maven-publish")
+}
+
 configurations {
     provided
     compile
@@ -196,6 +200,12 @@ publishing {
             version gitrev
             from components.java
         }
+        gpr(MavenPublication) {
+            groupId 'com.github.desyncr'
+            artifactId "fred"
+            version gitrev
+            from(components.java)
+        }
     }
     repositories {
         maven {
@@ -203,6 +213,14 @@ publishing {
             credentials(AwsCredentials) {
                 accessKey System.getenv('AWS_ACCESS_KEY_ID')
                 secretKey System.getenv('AWS_SECRET_ACCESS_KEY')
+            }
+        }
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/desyncr/fred")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
             }
         }
     }
