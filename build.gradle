@@ -238,17 +238,20 @@ dependencies {
     compile "org.bouncycastle:bcprov-jdk15on:1.59"
     compile "net.java.dev.jna:jna:4.2.2"
     compile "net.java.dev.jna:jna-platform:4.2.2"
-    // compile "org.freenetproject:freenet-ext:29"
-    compile 'com.github.desyncr:freenet-ext:0.60.0-SNAPSHOT'
+    compile "org.apache.commons:commons-compress:1.4.1"
     compile "tanukisoft:wrapper:3.2.3"
+
     compile 'com.github.desyncr:onion-common:0.0.1-SNAPSHOT'
     compile 'com.github.desyncr:onion-fec:0.0.1-SNAPSHOT'
-    compile "org.apache.commons:commons-compress:1.4.1"
     compile 'com.github.desyncr:mantissa:0.0.1-SNAPSHOT'
+
     compile "org.b1.pack:lzma-sdk-4j:9.22.0"
     compile "com.github.desyncr:lzmajio:0.0.1-SNAPSHOT"
 
     compile "com.github.desyncr:bitcollider-core:0.0.1-SNAPSHOT"
+
+    compile 'com.github.desyncr:freenet-ext:0.60.0-SNAPSHOT'
+
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.9.5"
     testCompile "org.hamcrest:hamcrest-library:1.3"
