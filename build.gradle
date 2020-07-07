@@ -8,10 +8,6 @@ buildscript {
     }
 }
 
-plugins {
-    id("maven-publish")
-}
-
 configurations {
     provided
     compile
@@ -25,6 +21,41 @@ repositories {
     mavenLocal() // TODO: use lib/ instead?
     maven { url 'https://mvn.freenetproject.org' }
     jcenter()
+    maven {
+        url 'https://maven.pkg.github.com/desyncr/onion-common'
+        credentials {
+            username = System.getenv("GITHUB_PACKAGE_REGISTRY_USERNAME")
+            password = System.getenv("GITHUB_PACKAGE_REGISTRY_TOKEN")
+        }
+    }
+    maven {
+        url 'https://maven.pkg.github.com/desyncr/onion-fec'
+        credentials {
+            username = System.getenv("GITHUB_PACKAGE_REGISTRY_USERNAME")
+            password = System.getenv("GITHUB_PACKAGE_REGISTRY_TOKEN")
+        }
+    }
+    maven {
+        url 'https://maven.pkg.github.com/desyncr/lzmajio'
+        credentials {
+            username = System.getenv("GITHUB_PACKAGE_REGISTRY_USERNAME")
+            password = System.getenv("GITHUB_PACKAGE_REGISTRY_TOKEN")
+        }
+    }
+    maven {
+        url 'https://maven.pkg.github.com/desyncr/bitcollider-core'
+        credentials {
+            username = System.getenv("GITHUB_PACKAGE_REGISTRY_USERNAME")
+            password = System.getenv("GITHUB_PACKAGE_REGISTRY_TOKEN")
+        }
+    }
+    maven {
+        url 'https://maven.pkg.github.com/desyncr/freenet-ext'
+        credentials {
+            username = System.getenv("GITHUB_PACKAGE_REGISTRY_USERNAME")
+            password = System.getenv("GITHUB_PACKAGE_REGISTRY_TOKEN")
+        }
+    }
 }
 
 sourceSets {
