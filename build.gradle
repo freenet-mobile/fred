@@ -219,8 +219,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/desyncr/fred")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_PACKAGE_REGISTRY_USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_PACKAGE_REGISTRY_TOKEN")
             }
         }
     }
