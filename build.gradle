@@ -50,6 +50,14 @@ repositories {
         }
     }
     maven {
+        url 'https://maven.pkg.github.com/desyncr/mantissa'
+        credentials {
+            username = System.getenv("GITHUB_PACKAGE_REGISTRY_USERNAME")
+            password = System.getenv("GITHUB_PACKAGE_REGISTRY_TOKEN")
+        }
+    }
+
+    maven {
         url 'https://maven.pkg.github.com/desyncr/freenet-ext'
         credentials {
             username = System.getenv("GITHUB_PACKAGE_REGISTRY_USERNAME")
