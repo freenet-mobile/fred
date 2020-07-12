@@ -51,6 +51,10 @@ public class SemiOrderedShutdownHook extends Thread {
 				// May as well move on
 			}
 		}
+
+		// Freenet-mobile added: Clear early jobs to be able to start and stop the
+		// node multiple times
+		earlyJobs.clear();
 		
 		Thread[] late = getLateJobs();
 
@@ -66,7 +70,10 @@ public class SemiOrderedShutdownHook extends Thread {
 				// May as well move on
 			}
 		}
-		
+
+		// Freenet-mobile added: Clear early jobs to be able to start and stop the
+		// node multiple times
+		lateJobs.clear();
 	}
 
 	private synchronized Thread[] getEarlyJobs() {

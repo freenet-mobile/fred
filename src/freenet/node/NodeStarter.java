@@ -221,6 +221,9 @@ public class NodeStarter implements WrapperListener {
 	 */
 	@Override
 	public int stop(int exitCode) {
+		// Freenet-mobile added: Removed flag to be able to start and stop the
+		// node multiple times.
+		isStarted = false;
 		System.err.println("Shutting down with exit code " + exitCode);
 		node.park();
 		// see #354
