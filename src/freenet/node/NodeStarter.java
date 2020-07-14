@@ -232,6 +232,39 @@ public class NodeStarter implements WrapperListener {
 		return exitCode;
 	}
 
+	/* Freenet-mobile added: Add flag and methods to stop and start opennet (opennetManager) */
+	private static boolean isPaused = false;
+
+	/**
+	 * Stop opennet manager
+	 *
+	 * @return
+	 */
+	public static int pause() {
+		if (isPaused)
+			return -1;
+
+		nodestarter_osgi.node.opennet.stop(false);
+		isPaused = true;
+
+		return 0;
+	}
+
+	/**
+	 * Re-starts opennet manager
+	 *
+	 * @return
+	 */
+	public static int resume() {
+		if (!isPaused)
+			return -1;
+
+		nodestarter_osgi.node.opennet.start();
+		isPaused = false;
+
+		return 0;
+	}
+
 	public void restart() {
 		WrapperManager.restart();
 	}
