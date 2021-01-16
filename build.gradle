@@ -21,6 +21,7 @@ repositories {
     mavenLocal() // TODO: use lib/ instead?
     maven { url 'https://mvn.freenetproject.org' }
     jcenter()
+    maven { url 'https://jitpack.io' }
 }
 
 sourceSets {
@@ -226,7 +227,19 @@ dependencies {
     compile "org.bouncycastle:bcprov-jdk15on:1.59"
     compile "net.java.dev.jna:jna:4.5.2"
     compile "net.java.dev.jna:jna-platform:4.5.2"
-    compile "org.freenetproject:freenet-ext:29"
+    compile "org.apache.commons:commons-compress:1.4.1"
+    compile "tanukisoft:wrapper:3.2.3"
+
+    compile 'com.github.desyncr:onion-common:0.0.2'
+    compile 'com.github.desyncr:onion-fec:0.0.2'
+    compile 'com.github.desyncr:mantissa:0.0.2'
+
+    compile "org.b1.pack:lzma-sdk-4j:9.22.0"
+    compile "com.github.desyncr:lzmajio:0.95.2"
+
+    compile "com.github.desyncr:bitcollider-core:0.0.2"
+
+    compile 'com.github.desyncr:freenet-ext:0.60.2'
 
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.9.5"
@@ -240,12 +253,34 @@ dependencyVerification {
         'org.bouncycastle:bcprov-jdk15on:1c31e44e331d25e46d293b3e8ee2d07028a67db011e74cb2443285aed1d59c85',
         'net.java.dev.jna:jna-platform:f1d00c167d8921c6e23c626ef9f1c3ae0be473c95c68ffa012bc7ae55a87e2d6',
         'net.java.dev.jna:jna:0c8eb7acf67261656d79005191debaba3b6bf5dd60a43735a245429381dbecff',
-        'org.freenetproject:freenet-ext:32f2b3d6beedf54137ea2f9a3ebef67666d769f0966b08cd17fd7db59ba4d79f',
+        'org.apache.commons:commons-compress:28a00d80716f073d644b9da76e94b5e8ff94de8e9323f06f558fba653fcf5f86',
+        'tanukisoft:wrapper:54de7b6be77955fe54821efc28fcab2bd195cc2aabfceb29d608c12206a57918',
+        'com.github.desyncr:onion-fec:1fbcbd91762f1f5415e7df2c33d47eed76212b9780757c5d5d9fa633cf01b50a',
+        'com.github.desyncr:onion-common:98343c743cee34e7c26c686dee6368d1a14c57615369f9ac4eaf0e092be94906',
+        'com.github.desyncr:mantissa:5e6d7c0f1c2acdc74888d2da73ddb91b099dd925d857bf8409d6ce2e08c3d023',
+        'com.github.desyncr:lzmajio:461677f98f1be84bffa5461a586bef1fe30d5073a7bba83cea26901b87fe7ff1',
+        'org.b1.pack:lzma-sdk-4j:6da258d8fecc5359a95922b236166d903146f589e3c806856124008c78596d55',
+        'com.github.desyncr:bitcollider-core:9c88da7ba466a09d5f04fa572e6101eee929e2b29726eef019df428571917f4f',
+        'com.github.desyncr:freenet-ext:7a9f65d388895767b6a6f1f8bd0c3a15f4d89e3f0bbb8242e5709b132451309e',
         'junit:junit:59721f0805e223d84b90677887d9ff567dc534d7c502ca903c0c2b17f05c116a',
         'org.mockito:mockito-core:f97483ba0944b9fa133aa29638764ddbeadb51ec3dbc02074c58fa2caecd07fa',
         'org.hamcrest:hamcrest-library:711d64522f9ec410983bd310934296da134be4254a125080a0416ec178dfad1c',
+        'org.tukaani:xz:7eafdc8880da10286c2398fa42e3bf68c3e845c35ae7a6ae67f5cc1fa16c7405',
+        'ant:ant-jakarta-oro:c46e2557d6a42ce2675763dfaab30ae7e5900d26e9bfc5f02a6f79f99b442faf',
+        'ant:ant-jakarta-log4j:d8f5acecc069f4f0cacc45f7df7dfa2ffae978e1806150ccbee0f636cccc42bb',
+        'org.codehaus.javancss:javancss:26e3b58ed18a2b399219d9dbf661681fddef426ee224efff127fb4be01edd61e',
+        'org.ow2.asm:asm:ca5b8d11569e53921b0e3486469e7c674361c79845dad3d514f38ab6e0c8c10a',
+        'javancss:ccl:b0af3eed1fe0060e6b2f02e52a1ec023455ce94cc228d6ce2b37fe31b4c5610f',
         'org.hamcrest:hamcrest-core:66fdef91e9739348df7a096aa384a5685f4e875584cce89386a7a47251c4d8e9',
         'org.objenesis:objenesis:c5694b55d92527479382f254199b3c6b1d8780f652ad61e9ca59919887f491a8',
+        'net.sourceforge.cobertura:cobertura:4a0f63b48d731908776f9fc3e2ac57cdc5ce265c7b9b77fde632a579a9727976',
+        'javancss:jhbasic:5f368d043cd2d7f55c5570b11e88be154dd86102d850c2998ef36e29657c723c',
+        'oro:oro:e00ccdad5df7eb43fdee44232ef64602bf63807c2d133a7be83ba09fd49af26e',
+        'asm:asm-tree:0af6ebf0e3dc4a26c5498bffc226b8b40058d9ef2b4971dea26f72d8c7891fd3',
+        'asm:asm:940a14aa5489191e38d963f62d370b599440d3a16d142e107fc25d0c4b2ab662',
+        'log4j:log4j:d2b9dfb297bcaa7be1fcdd702642a9c9713d7847dca8704e9c15bd829f0ab1bf',
+        'org.apache.ant:ant:92f72307e7440f1e352c916f2438d2bbab3ffd2cf730c71316117ad04abadea8',
+        'org.apache.ant:ant-launcher:72b3d03e0d7d86a56513ec38dd4cd6abe3da6620189be222ab255352cb6eba4a',
     ]
 }
 
