@@ -29,7 +29,6 @@ import freenet.io.comm.Message;
 import freenet.io.comm.NotConnectedException;
 import freenet.keys.FreenetURI;
 import freenet.l10n.NodeL10n;
-import freenet.node.Announcer;
 import freenet.node.Node;
 import freenet.node.NodeInitException;
 import freenet.node.NodeFile;
@@ -549,9 +548,9 @@ public class NodeUpdateManager {
 					getInstallerWindowsURI(), NodeFile.InstallerWindows);
 
 			installerGetter.start(RequestStarter.UPDATE_PRIORITY_CLASS,
-					32 * 1024 * 1024);
+					100 * 1024 * 1024);
 			wininstallerGetter.start(RequestStarter.UPDATE_PRIORITY_CLASS,
-					32 * 1024 * 1024);
+					100 * 1024 * 1024);
 
 		}
 
@@ -1736,9 +1735,9 @@ public class NodeUpdateManager {
 						"invalidUpdateURI", "error",
 						e.getLocalizedMessage()));
 			}
-			if(updateURI.hasMetaStrings())
+			if(uri.hasMetaStrings())
 				throw new InvalidConfigValueException(l10n("updateURIMustHaveNoMetaStrings"));
-			if(!updateURI.isUSK())
+			if(!uri.isUSK())
 				throw new InvalidConfigValueException(l10n("updateURIMustBeAUSK"));
 			setURI(uri);
 		}
